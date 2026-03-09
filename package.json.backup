@@ -1,0 +1,45 @@
+{
+  "name": "dotengage",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@angular/animations": "20.3.19",
+    "@angular/common": "20.3.19",
+    "@angular/compiler": "20.3.19",
+    "@angular/core": "20.3.19",
+    "@angular/forms": "20.3.19",
+    "@angular/platform-browser": "20.3.19",
+    "@angular/platform-server": "20.3.19",
+    "@angular/router": "20.3.19",
+    "@angular/ssr": "20.3.19",
+    "@angular-devkit/core": "20.3.19",
+    "@angular-devkit/schematics": "20.3.19",
+    "@schematics/angular": "20.3.19",
+    "@angular/material": "20.3.19",
+    "@angular/cdk": "20.3.19",
+    "express": "5.1.0",
+    "lodash": "4.17.23",
+    "prismjs": "1.30.0",
+    "rxjs": "7.8.1",
+    "tslib": "2.3.0"
+  },
+  "devDependencies": {
+    "@angular/cli": "20.3.19",
+    "@angular/build": "20.3.19",
+    "@angular/compiler-cli": "20.3.19",
+    "typescript": "5.8.4",
+    "@types/node": "20.17.19",
+    "@types/express": "5.0.1",
+    "@types/lodash": "4.17.24",
+    "@types/prismjs": "1.26.6",
+    "jsdom": "28.0.0",
+    "prettier": "3.8.1",
+    "vitest": "4.0.8"
+  }
+}

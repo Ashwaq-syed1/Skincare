@@ -1,1 +1,167 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@use 'sass:color';
+
+/* SCSS variables for computations */
+$screenshot-button-color: #c63333;
+$undo-button-color: #343434;
+$brand-color: rgb(78, 58, 118);
+$brand-color-light: rgb(125, 109, 158);
+$skin-care-primary: rgba(32, 22, 49, 1);
+$star-color: #f4d144;
+$skin-care-message-bar-background: rgba(237, 234, 240, 1);
+$skin-care-secondary: rgba(32, 22, 49, 0.54);
+$skin-care-search-outline: rgba(32, 22, 49, 0.12);
+$icon-red: rgba(230, 89, 89, 1);
+$icon-green: rgba(110, 182, 77, 1);
+$icon-orange: rgba(232, 140, 70, 0.1);
+$background-color: #fffcf4;
+$font-family: 'Im Sans', sans-serif;
+
+/* Derived SCSS values */
+$screenshot-button-hover-color: color.scale($screenshot-button-color, $lightness: -10%, $space: oklch);
+$undo-button-hover-color: color.scale($undo-button-color, $lightness: -10%, $space: oklch);
+
+/* Expose CSS custom properties for runtime use */
+:root {
+  --brand-color: #{$brand-color};
+  --brand-color-light: #{$brand-color-light};
+  --skin-care-primary: #{$skin-care-primary};
+  --star-color: #{$star-color};
+  --skin-care-message-bar-background: #{$skin-care-message-bar-background};
+  --skin-care-secondary: #{$skin-care-secondary};
+  --skin-care-search-outline: #{$skin-care-search-outline};
+  --icon-red: #{$icon-red};
+  --icon-green: #{$icon-green};
+  --icon-orange: #{$icon-orange};
+  --background-color: #{$background-color};
+  --font-family: #{$font-family};
+  --screenshot-button-color: #{$screenshot-button-color};
+  --screenshot-button-hover-color: #{$screenshot-button-hover-color};
+  --undo-button-color: #{$undo-button-color};
+  --undo-button-hover-color: #{$undo-button-hover-color};
+}
+
+/* Global HTML styles */
+html {
+  height: 100%;
+  background-color: var(--background-color);
+  font-family: var(--font-family);
+  font-size: 15px;
+  color: var(--skin-care-primary);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  padding: 0;
+}
+
+/* Global element defaults */
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* App root */
+app-root {
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  display: block;
+}
+
+/* Utility font classes */
+.dm-sans-400 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dm-sans-300 {
+  font-family: var(--font-family);
+  font-weight: 300;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+.dm-sans-200 {
+  font-family: var(--font-family);
+  font-weight: 200;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Brand and skin-care helper classes */
+.brand-color {
+  color: var(--brand-color);
+}
+
+.brand-color-light {
+  color: var(--brand-color-light);
+}
+
+.skin-care-primary {
+  color: var(--skin-care-primary);
+}
+
+.star-color {
+  color: var(--star-color);
+}
+
+.skin-care-message-bar-background {
+  background-color: var(--skin-care-message-bar-background);
+}
+
+.skin-care-secondary {
+  color: var(--skin-care-secondary);
+}
+
+.skin-care-search-outline {
+  outline-color: var(--skin-care-search-outline);
+}
+
+/* Icon color helpers */
+.icon-red {
+  color: var(--icon-red);
+}
+
+.icon-green {
+  color: var(--icon-green);
+}
+
+.icon-orange {
+  color: var(--icon-orange);
+}
+
+/* Screenshot and undo button helpers */
+.screenshot-button {
+  background-color: var(--screenshot-button-color);
+  &:hover {
+    background-color: var(--screenshot-button-hover-color);
+  }
+}
+
+.undo-button {
+  background-color: var(--undo-button-color);
+  &:hover {
+    background-color: var(--undo-button-hover-color);
+  }
+}
+
+/* Angular Material icon button ripple override */
+.mat-mdc-icon-button .mat-mdc-button-ripple {
+  --mat-mdc-button-ripple-color: rgba(78, 58, 118, 0.24);
+}

@@ -1,0 +1,58 @@
+<!-- chat-message.component.html -->
+<div class="message-container" [ngClass]="message?.sender">
+  <div class="message-avatar" [ngClass]="message?.sender">
+    {{ message?.senderAvatar }}
+  </div>
+
+  <div class="message-content">
+    <ng-container *ngIf="message?.sender === 'bot'; else nonBot">
+      <div class="sender-name">
+        Assistant
+        <button #viewSql *ngIf="message?.sqlQuery" matTooltip="View SQL query" mat-icon-button class="open-code-button"
+          (click)="openSqlDialog()">
+          <mat-icon class="code-icon">code</mat-icon>
+        </button>
+      </div>
+
+      <div class="sender-content">
+        <ng-container *ngFor="let line of messageLines; let i = index">
+          {{ line }}<br *ngIf="i < messageLines.length - 1" />
+        </ng-container>
+
+        <!-- Guard the whole table block so nested properties are safe to access -->
+        <!-- replace existing table-wrapper block with this -->
+        <div class="table-wrapper">
+          <ng-container *ngIf="hasTableData; else noData">
+            <app-data-table [data]="tableDataForView"></app-data-table>
+          </ng-container>
+        </div>
+
+        <ng-template #noData>
+          <div class="no-data-message">No results found. Try another question.</div>
+        </ng-template>
+
+        <!-- Guard orderDetails before reading .status -->
+        <div *ngIf="message?.orderDetails">
+          <button class="order-button" mat-raised-button
+            [disabled]="message?.orderDetails?.status !== 'CONFIRMATION_REQUIRED'"
+            (click)="orderConfirmed.emit(message.orderDetails)">
+            <ng-container [ngSwitch]="message?.orderDetails?.status">
+              <span *ngSwitchCase="'CONFIRMATION_REQUIRED'">Confirm order</span>
+              <span *ngSwitchCase="'CONFIRMING'">Confirming...</span>
+              <span *ngSwitchCase="'CONFIRMED'">Order CONFIRMED</span>
+              <span *ngSwitchDefault>Confirm order</span>
+            </ng-container>
+          </button>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #nonBot>
+      <div class="sender-content">
+        <ng-container *ngFor="let line of messageLines; let i = index">
+          {{ line }}<br *ngIf="i < messageLines.length - 1" />
+        </ng-container>
+      </div>
+    </ng-template>
+  </div>
+</div>

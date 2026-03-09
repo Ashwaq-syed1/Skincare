@@ -2,9 +2,15 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "af6aa8e4-b8cc-4fa2-ac6e-2af5ea4ef8c1"
   },
   "newProjectRoot": "projects",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
   "projects": {
     "dotengage": {
       "projectType": "application",
@@ -34,9 +40,6 @@
             ],
             "server": "src/main.server.ts",
             "outputMode": "server",
-            "security": {
-              "allowedHosts": []
-            },
             "ssr": {
               "entry": "src/server.ts"
             }
@@ -75,7 +78,14 @@
               "buildTarget": "dotengage:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "host": "0.0.0.0",
+            "port": 4200,
+            "allowedHosts": [
+              "*.cloudshell.dev"
+            ]
+          }
         },
         "test": {
           "builder": "@angular/build:unit-test"
